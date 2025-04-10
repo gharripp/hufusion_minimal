@@ -19,7 +19,7 @@ export default function Hero() {
         <p className="text-3xl text-gray-300 mb-8 max-w-3xl">
           Stellarator for Training And Research
         </p>
-        <a href="/research/star-lite" className="border-2 border-white px-12 py-3 text-lg hover:bg-white hover:text-black transition-all duration-300">
+        <a href="/hufusion_minimal/research/star-lite" className="border-2 border-white px-12 py-3 text-lg hover:bg-white hover:text-black transition-all duration-300">
           DISCOVER
         </a>
       </div>
