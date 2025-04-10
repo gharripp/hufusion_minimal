@@ -27,7 +27,7 @@ function HomePage() {
 
 export default function App() {
   return (
-    <Router>
+    <Router basename="/hufusion_minimal/">
       <div className="min-h-screen bg-black text-white">
         <Navbar />
         <Routes>
