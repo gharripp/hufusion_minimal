@@ -4,14 +4,14 @@ import PageHeader from '../../components/PageHeader';
 export default function UniversityScale() {
   return (
     <div className="min-h-screen bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto py-16"> {/* Removed px-4 sm:px-6 lg:px-8 from here */}
         <PageHeader
           title="University Scale Fusion"
           description="Building the future of fusion science through accessible research devices"
         />
 
         {/* Historical Context */}
-        <section className="mb-16">
+        <section className="mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white mb-6">Evolution of Fusion Research</h2>
           <div className="bg-gray-900 p-6 rounded-lg mb-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -32,7 +32,7 @@ export default function UniversityScale() {
         </section>
 
         {/* Current Challenges */}
-        <section className="mb-16">
+        <section className="mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white mb-6">Why University Scale Matters</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-gray-900 p-6 rounded-lg">
@@ -81,7 +81,7 @@ export default function UniversityScale() {
         </section>
 
         {/* Our Approach */}
-        <section className="mb-16">
+        <section className="mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white mb-6">Modern Solutions</h2>
           <div className="bg-gray-900 p-6 rounded-lg">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -132,7 +132,7 @@ export default function UniversityScale() {
         </section>
 
         {/* Vision */}
-        <section>
+        <section className="px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white mb-6">Our Vision</h2>
           <div className="bg-gray-900 p-6 rounded-lg">
             <p className="text-gray-300 mb-6">

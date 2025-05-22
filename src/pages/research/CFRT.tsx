@@ -3,15 +3,15 @@ import PageHeader from '../../components/PageHeader';
 
 export default function CfrtDivertorResearch() {
   return (
-    <div className="min-h-screen bg-black pt-20"> {/* Added pt-20 assuming header is fixed */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div className="min-h-screen bg-black pt-20"> {/* This handles space for fixed header */}
+      <div className="max-w-7xl mx-auto">
         <PageHeader
           title="Center for Fusion Research and Training (CFRT)"
           description="Pioneering fusion research, education, and divertor theory at Hampton University"
         />
 
         {/* Section 1: History and Legacy of CFRT */}
-        <section className="mb-16">
+        <section className="mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-6">A Legacy of Fusion Research and Training</h2>
           <div className="bg-gray-900 p-6 rounded-lg mb-8 space-y-4">
             <p className="text-gray-300 leading-relaxed">
@@ -36,7 +36,7 @@ export default function CfrtDivertorResearch() {
         </section>
 
         {/* Section 2: Non-Resonant Divertor (NRD) Research */}
-        <section className="mb-16">
+        <section className="mb-16 px-4 sm:px-6 lg:px-8">
           <h2 className="text-3xl font-bold text-white mb-6">Advancing Stellarator Divertor Physics</h2>
            <div className="bg-gray-900 p-6 rounded-lg space-y-6">
             <p className="text-gray-300 leading-relaxed">
@@ -45,7 +45,7 @@ export default function CfrtDivertorResearch() {
             <div>
               <h3 className="text-xl font-bold text-white mb-4">What is a Non-Resonant Divertor?</h3>
               <p className="text-gray-300 leading-relaxed mb-4">
-                The core idea of NRD is that magnetic field lines just outside the main confining plasma region naturally collimate into distinct bundles or "magnetic turnstiles." These turnstiles, always appearing in pairs (one incoming, one outgoing), efficiently guide heat and particles towards specific locations on the vessel wall. Understanding how and why these field lines collimate is central to NRD research.
+                The core idea of NRD is that magnetic field lines just outside the main confining plasma region naturally colimate into distinct bundles or "magnetic turnstiles." These turnstiles, always appearing in pairs (one incoming, one outgoing), efficiently guide heat and particles towards specific locations on the vessel wall. Understanding how and why these field lines colimate is central to NRD research.
               </p>
               <h4 className="text-lg text-hampton-blue mb-2">Key Properties and Advantages:</h4>
               <ul className="space-y-3 text-gray-300">

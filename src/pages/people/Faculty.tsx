@@ -53,7 +53,7 @@ export default function Faculty() {
         description="Meet our distinguished faculty members leading groundbreaking fusion research"
       />
       
-      <div className="mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="mx-auto px-4 sm:px-6 lg:px-8"> {/* Removed pt-16 */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {facultyMembers.map((member) => (
             <PersonCard key={member.id} person={member} />

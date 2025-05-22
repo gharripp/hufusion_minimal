@@ -4,14 +4,14 @@ import PageHeader from '../../components/PageHeader';
 export default function MagneticConfinement() {
   return (
     <div className="min-h-screen bg-black">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+      <div className="max-w-7xl mx-auto py-16"> {/* Removed px-4 sm:px-6 lg:px-8 from here */}
         <PageHeader
           title="Magnetic Confinement Fusion"
           description="Exploring different approaches to plasma confinement for fusion energy"
         />
 
         {/* Introduction */}
-        <div className="text-gray-300 mb-12">
+        <div className="text-gray-300 mb-12 px-4 sm:px-6 lg:px-8">
           <p className="mb-6">
             Magnetic confinement fusion uses powerful magnetic fields to contain
             and isolate hot plasma, enabling nuclear fusion reactions. Two major
@@ -21,7 +21,7 @@ export default function MagneticConfinement() {
         </div>
 
         {/* Main Comparison Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12 px-4 sm:px-6 lg:px-8">
           {/* Stellarator Section */}
           <div className="bg-gray-900 p-6 rounded-lg">
             <h2 className="text-2xl font-bold text-white mb-4">Stellarator</h2>
@@ -108,7 +108,7 @@ export default function MagneticConfinement() {
         </div>
 
         {/* Research Focus Section */}
-        <div className="bg-gray-900 p-6 rounded-lg">
+        <div className="bg-gray-900 p-6 rounded-lg px-4 sm:px-6 lg:px-8">
           <h2 className="text-2xl font-bold text-white mb-4">
             Our Research Focus
           </h2>

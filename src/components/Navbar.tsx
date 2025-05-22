@@ -20,13 +20,11 @@ const navItems = {
   PEOPLE: [
     { label: 'Faculty', href: '/people/faculty' },
     { label: 'Students', href: '/people/students' },
-    { label: 'Staff', href: '/people/staff' },
   ],
   EDUCATION: [
-    { label: 'Graduate Program', href: '/education/graduate' },
-    { label: 'Undergraduate', href: '/education/undergraduate' },
-    { label: 'Summer School', href: '/education/summer-school' },
-    { label: 'Internships', href: '/education/internships' },
+    { label: 'Join', href: '/education/graduate' },
+    { label: 'Past Student Projects', href: '/education/undergraduate' },
+    { label: 'Summer Research Program 2025', href: '/education/internships' },
   ],
   NEWS: [
     { label: 'Latest', href: '/news/latest' },
