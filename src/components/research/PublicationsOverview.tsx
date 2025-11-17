@@ -9,7 +9,7 @@ const PublicationsOverview = () => {
         </p>
         {/* You could add a link to Google Scholar or a specific publications database if available */}
         <p className="text-gray-300 mt-4">
-          In the meantime, our research spans areas like stellarator theory, non-resonant divertors, plasma stability, and magnetic confinement optimization, with contributions appearing in journals such as Physics of Plasmas, Nuclear Fusion, and Physical Review Letters.
+          In the meantime, our research spans areas like stellarator theory, non-resonant divertors, plasma stability, and magnetic confinement optimization.
         </p>
       </div>
     </div>

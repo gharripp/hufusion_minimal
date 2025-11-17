@@ -1,29 +1,19 @@
 import { NewsItem } from '../../types/news';
 import NewsCard from './NewsCard';
-import { useEffect, useState } from 'react';
-import { newsItems as staticNewsItems } from '../../data/news';
 
 interface NewsGridProps {
+  items: NewsItem[];
   limit?: number;
 }
 
-export default function NewsGrid({ limit }: NewsGridProps) {
-  const [items, setItems] = useState<NewsItem[]>([]);
+export default function NewsGrid({ items, limit }: NewsGridProps) {
   const displayItems = limit ? items.slice(0, limit) : items;
 
-  useEffect(() => {
-    const fetchNews = async () => {
-      setItems(staticNewsItems);
-    };
-
-    fetchNews();
-  }, []);
-  
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {displayItems.map((item, index) => (
-        <NewsCard 
-          key={item.id} 
+        <NewsCard
+          key={item.id}
           news={item}
           featured={index === 0}
         />
