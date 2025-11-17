@@ -12,7 +12,7 @@ export default function Footer() {
           <div className="col-span-1">
             <Logo className="h-12 w-auto mb-4" variant="icon" />
             <p className="text-gray-400 mb-4">
-              HU Fusion is at the forefront of fusion energy research, focusing on innovative stellarator design and plasma physics education.
+              HU Fusion focuses on innovative Stellarator design and control and plasma physics education that places our students at the forefront of fusion science.
             </p>
           </div>
 
@@ -66,12 +66,24 @@ export default function Footer() {
 
           {/* External Resources */}
           <div className="col-span-1">
+            <a
+              href="https://home.hamptonu.edu/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block mb-6"
+            >
+              <img
+                src="/images/HU_logo_white.png"
+                alt="Hampton University"
+                className="h-16 w-auto hover:opacity-80 transition-opacity"
+              />
+            </a>
             <h2 className="text-xl font-bold text-white mb-4">Resources</h2>
             <ul className="space-y-2">
               <li>
-                <a 
-                  href="https://www.hamptonu.edu" 
-                  target="_blank" 
+                <a
+                  href="https://home.hamptonu.edu/"
+                  target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center text-gray-400 hover:text-hampton-blue transition-colors"
                 >
