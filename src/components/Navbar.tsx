@@ -22,7 +22,6 @@ const navItems = {
     { label: 'Students', href: '/people/students' },
   ],
   EDUCATION: [
-    { label: 'Join', href: '/education/graduate' },
     { label: 'Past Student Projects', href: '/education/undergraduate' },
     { label: 'Summer Research Program 2025', href: '/education/internships' },
   ],

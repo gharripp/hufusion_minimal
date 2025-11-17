@@ -19,7 +19,10 @@ const Collaborations = lazy(() => import('./pages/research/Collaborations'));
 const Publications = lazy(() => import('./pages/research/Publications'));
 const StarLite = lazy(() => import('./pages/research/StarLite'));
 const Latest = lazy(() => import('./pages/news/Latest'));
+const NewsDetail = lazy(() => import('./pages/news/NewsDetail'));
 const Contact = lazy(() => import('./pages/Contact'));
+const Undergraduate = lazy(() => import('./pages/education/Undergraduate'));
+const Internships = lazy(() => import('./pages/education/Internships'));
 const NewsAdmin = lazy(() => import('./pages/admin/NewsAdmin'));
 const TestFirebase = lazy(() => import('./pages/admin/TestFirebase'));
 const BatchImport = lazy(() => import('./pages/admin/BatchImport'));
@@ -58,8 +61,11 @@ export default function App() {
             <Route path="/people/faculty" element={<Faculty />} />
             <Route path="/people/bio/:id" element={<PersonBio />} />
             <Route path="/news/latest" element={<Latest />} />
+            <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/people/students" element={<Students />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/education/undergraduate" element={<Undergraduate />} />
+            <Route path="/education/internships" element={<Internships />} />
             <Route path="/admin/news" element={<NewsAdmin />} />
             <Route path="/admin/import" element={<BatchImport />} />
             <Route path="/admin/test" element={<TestFirebase />} />

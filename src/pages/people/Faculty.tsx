@@ -8,7 +8,7 @@ const facultyMembers = [
     name: 'Dr. Calvin Lowe',
     role: 'HU Fusion Director',
     title: 'Research Professor',
-    image: '/images/Calvin-Lowe.jpg',
+    image: '/images/Calvin-Lowe.png',
     specialization: 'Plasma Physics',
   },
   {

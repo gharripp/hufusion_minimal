@@ -16,10 +16,22 @@ interface PersonCardProps {
 }
 
 export default function PersonCard({ person, clickable = true }: PersonCardProps) {
-  // Format name as "F. Lastname"
+  // Format name as "F. Lastname" but preserve titles like "Dr."
   const formatName = (fullName: string) => {
     const parts = fullName.trim().split(' ');
     if (parts.length === 1) return fullName;
+
+    // Check if first part is a title (Dr., Prof., etc.)
+    if (parts[0].endsWith('.')) {
+      // Keep the title and format the rest
+      const title = parts[0];
+      if (parts.length === 2) return fullName; // Just "Dr. Name"
+      const firstInitial = parts[1].charAt(0);
+      const lastName = parts.slice(2).join(' ');
+      return `${title} ${firstInitial}. ${lastName}`;
+    }
+
+    // Regular name formatting
     const firstInitial = parts[0].charAt(0);
     const lastName = parts.slice(1).join(' ');
     return `${firstInitial}. ${lastName}`;
