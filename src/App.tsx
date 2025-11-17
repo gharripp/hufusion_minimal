@@ -24,6 +24,7 @@ const Contact = lazy(() => import('./pages/Contact'));
 const Undergraduate = lazy(() => import('./pages/education/Undergraduate'));
 const Internships = lazy(() => import('./pages/education/Internships'));
 const NewsAdmin = lazy(() => import('./pages/admin/NewsAdmin'));
+const PublicationsAdmin = lazy(() => import('./pages/admin/PublicationsAdmin'));
 const TestFirebase = lazy(() => import('./pages/admin/TestFirebase'));
 const BatchImport = lazy(() => import('./pages/admin/BatchImport'));
 
@@ -67,6 +68,7 @@ export default function App() {
             <Route path="/education/undergraduate" element={<Undergraduate />} />
             <Route path="/education/internships" element={<Internships />} />
             <Route path="/admin/news" element={<NewsAdmin />} />
+            <Route path="/admin/publications" element={<PublicationsAdmin />} />
             <Route path="/admin/import" element={<BatchImport />} />
             <Route path="/admin/test" element={<TestFirebase />} />
           </Routes>

@@ -16,7 +16,7 @@ const navItems = {
     { label: 'CFRT', href: '/research/cfrt' },
     { label: 'Divertor Theory', href: '/research/divertor-theory' },
     { label: 'STAR_Lite', href: '/research/star-lite' },
-    { label: 'Publications', href: '/research/publications' },
+    { label: 'Publications and Presentations', href: '/research/publications' },
     { label: 'Collaborations', href: '/research/collaborations' },
   ],
   PEOPLE: [
