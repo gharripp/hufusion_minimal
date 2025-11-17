@@ -57,7 +57,7 @@ export default function Faculty() {
         <div className="px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {facultyMembers.map((member) => (
-              <PersonCard key={member.id} person={member} />
+              <PersonCard key={member.id} person={member} clickable={false} />
             ))}
           </div>
         </div>

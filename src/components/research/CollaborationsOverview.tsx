@@ -11,6 +11,10 @@ const CollaborationsOverview = () => {
         <ul className="space-y-3 text-gray-300">
           <li className="flex items-start">
             <span className="text-hampton-blue mr-2">•</span>
+            <span>Center for Computational Mathematics, Flatiron Institute, NY, USA</span>
+          </li>
+          <li className="flex items-start">
+            <span className="text-hampton-blue mr-2">•</span>
             <span>Princeton Plasma Physics Laboratory (PPPL)</span>
           </li>
           <li className="flex items-start">
@@ -28,10 +32,6 @@ const CollaborationsOverview = () => {
           <li className="flex items-start">
             <span className="text-hampton-blue mr-2">•</span>
             <span>Max Planck Institute for Plasma Physics (IPP), Greifswald</span>
-          </li>
-          <li className="flex items-start">
-            <span className="text-hampton-blue mr-2">•</span>
-            <span>Flatiron Institute (Simons Foundation)</span>
           </li>
           <li className="flex items-start">
             <span className="text-hampton-blue mr-2">•</span>
