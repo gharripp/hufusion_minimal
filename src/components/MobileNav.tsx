@@ -69,6 +69,17 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             </ul>
           </div>
         ))}
+
+        {/* Get in Touch Link */}
+        <div className="mt-8 pt-6 border-t border-gray-800">
+          <Link
+            to="/contact"
+            className="block bg-hampton-blue hover:bg-blue-700 text-white font-semibold py-3 px-4 rounded-lg text-center transition-colors"
+            onClick={onClose}
+          >
+            GET IN TOUCH
+          </Link>
+        </div>
       </nav>
     </div>
   );

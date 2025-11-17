@@ -67,6 +67,12 @@ export default function Navbar() {
                   onMouseLeave={() => setActiveDropdown(null)}
                 />
               ))}
+              <Link
+                to="/contact"
+                className="text-white hover:text-hampton-blue transition-colors font-medium"
+              >
+                GET IN TOUCH
+              </Link>
             </div>
           </div>
         </div>
