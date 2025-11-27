@@ -1,6 +1,7 @@
 import { create } from 'zustand';
 import {
   signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
   signOut as firebaseSignOut,
   onAuthStateChanged,
   User
@@ -12,6 +13,7 @@ interface AuthState {
   loading: boolean;
   error: string | null;
   signIn: (email: string, password: string) => Promise<void>;
+  signUp: (email: string, password: string) => Promise<void>;
   signOut: () => Promise<void>;
   initializeAuth: () => void;
 }
@@ -26,8 +28,19 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await signInWithEmailAndPassword(auth, email, password);
       set({ loading: false });
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error) {
+      set({ error: (error as Error).message, loading: false });
+      throw error;
+    }
+  },
+
+  signUp: async (email: string, password: string) => {
+    set({ loading: true, error: null });
+    try {
+      await createUserWithEmailAndPassword(auth, email, password);
+      set({ loading: false });
+    } catch (error) {
+      set({ error: (error as Error).message, loading: false });
       throw error;
     }
   },
@@ -37,8 +50,8 @@ export const useAuthStore = create<AuthState>((set) => ({
     try {
       await firebaseSignOut(auth);
       set({ user: null, loading: false });
-    } catch (error: any) {
-      set({ error: error.message, loading: false });
+    } catch (error) {
+      set({ error: (error as Error).message, loading: false });
       throw error;
     }
   },

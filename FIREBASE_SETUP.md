@@ -41,24 +41,43 @@ This guide will help you set up Firebase for the news article management system.
 1. Go to **Firestore Database** > **Rules**
 2. Replace the default rules with:
 
-```
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
-    // News collection - read public, write only for authenticated users
-    match /news/{document} {
-      allow read: if true;
-      allow create, update, delete: if request.auth != null;
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && (
+        // Hardcoded super admin
+        request.auth.token.email == 'fusion@hamptonu.edu' || 
+        // Check if user is in allowed_users collection
+        exists(/databases/$(database)/documents/allowed_users/$(request.auth.token.email))
+      );
     }
 
-    // Publications collection - read public, write only for authenticated users
+    // News collection
+    match /news/{document} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Publications collection
     match /publications/{document} {
       allow read: if true;
-      allow create, update, delete: if request.auth != null;
+      allow create, update, delete: if isAdmin();
+    }
+
+    // Account Requests - public create, admin read/update
+    match /account_requests/{document} {
+      allow create: if true;
+      allow read, update: if isAdmin();
+    }
+
+    // Allowed Users - admin only
+    match /allowed_users/{document} {
+      allow read, write: if isAdmin();
     }
   }
 }
-```
 
 3. Click "Publish"
 
@@ -95,21 +114,30 @@ service firebase.storage {
 
 3. Click "Publish"
 
-## 4. Deploy to GitHub Pages
+## 4. Deploy to Production
 
-Since GitHub Pages only serves static files, the Firebase SDK will handle all backend operations from the client side. The security rules you set up protect your data.
+### Option 1: Firebase Hosting (Recommended)
 
-### Update Firebase Configuration for Production
+Since you are using Firebase Hosting:
 
-If you're using environment variables locally but need to deploy to GitHub Pages:
+1.  Build the project:
+    ```bash
+    npm run build
+    ```
 
-**Option 1: Use GitHub Secrets (Recommended)**
-1. Go to your GitHub repository > Settings > Secrets and variables > Actions
-2. Add each Firebase config value as a secret (VITE_FIREBASE_API_KEY, etc.)
-3. Update your GitHub Actions workflow to inject these during build
+2.  Deploy to Firebase:
+    ```bash
+    firebase deploy
+    ```
 
-**Option 2: Commit Config Directly**
-The Firebase config values are safe to commit publicly - they're meant for client-side use. Security is enforced by Firebase Security Rules. You can update `src/lib/firebase.ts` with your actual values.
+### Option 2: GitHub Pages
+
+If you prefer GitHub Pages, you can configure it, but Firebase Hosting is easier since you are already using Firebase services.
+
+### Update Firebase Configuration
+
+Ensure your `src/lib/firebase.ts` or `.env` files have the correct production configuration.
+The Firebase config values are safe to commit publicly - they're meant for client-side use. Security is enforced by Firebase Security Rules.
 
 ## 5. Using the Admin Interface
 

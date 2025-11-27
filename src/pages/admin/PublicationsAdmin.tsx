@@ -8,6 +8,7 @@ import {
   deletePublication,
   PublicationFormData
 } from '../../services/publicationService';
+import { checkIsAllowed } from '../../services/adminService';
 import { Publication } from '../../types/publication';
 
 export default function PublicationsAdmin() {
@@ -30,10 +31,25 @@ export default function PublicationsAdmin() {
   const [submitting, setSubmitting] = useState(false);
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [isAllowed, setIsAllowed] = useState(false);
+  const [checkingAccess, setCheckingAccess] = useState(true);
 
   useEffect(() => {
-    loadPublications();
-  }, []);
+    const checkAccess = async () => {
+      if (user?.email) {
+        const allowed = await checkIsAllowed(user.email);
+        setIsAllowed(allowed);
+      }
+      setCheckingAccess(false);
+    };
+    checkAccess();
+  }, [user]);
+
+  useEffect(() => {
+    if (isAllowed) {
+      loadPublications();
+    }
+  }, [isAllowed]);
 
   const loadPublications = async () => {
     setLoading(true);
@@ -154,8 +170,25 @@ export default function PublicationsAdmin() {
             >
               Sign In
             </button>
+            <div className="text-center text-sm text-gray-400 mt-4">
+              Don't have an account? <a href="/request-access" className="text-hampton-blue hover:underline">Request Access</a>
+            </div>
           </form>
         </div>
+      </div>
+    );
+  }
+
+  if (checkingAccess) {
+    return <div className="min-h-screen bg-black text-white flex items-center justify-center">Checking access...</div>;
+  }
+
+  if (!isAllowed) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center flex-col gap-4">
+        <div className="text-xl text-red-500">Access Denied</div>
+        <p>You are not authorized to access this page.</p>
+        <button onClick={() => signOut()} className="text-hampton-blue hover:underline">Sign Out</button>
       </div>
     );
   }
@@ -336,9 +369,8 @@ export default function PublicationsAdmin() {
                 <div className="flex justify-between items-start">
                   <div className="flex-1">
                     <div className="flex items-center mb-2">
-                      <span className={`px-2 py-1 rounded text-xs font-semibold mr-2 ${
-                        pub.type === 'publication' ? 'bg-blue-900 text-blue-300' : 'bg-purple-900 text-purple-300'
-                      }`}>
+                      <span className={`px-2 py-1 rounded text-xs font-semibold mr-2 ${pub.type === 'publication' ? 'bg-blue-900 text-blue-300' : 'bg-purple-900 text-purple-300'
+                        }`}>
                         {pub.type === 'publication' ? 'Publication' : `Presentation (${pub.presentationType})`}
                       </span>
                       <span className="text-gray-400 text-sm">{pub.year}</span>

@@ -27,6 +27,9 @@ const NewsAdmin = lazy(() => import('./pages/admin/NewsAdmin'));
 const PublicationsAdmin = lazy(() => import('./pages/admin/PublicationsAdmin'));
 const TestFirebase = lazy(() => import('./pages/admin/TestFirebase'));
 const BatchImport = lazy(() => import('./pages/admin/BatchImport'));
+const RequestAccess = lazy(() => import('./pages/admin/RequestAccess'));
+const AdminRequests = lazy(() => import('./pages/admin/AdminRequests'));
+const SignUp = lazy(() => import('./pages/admin/SignUp'));
 
 function HomePage() {
   return (
@@ -71,6 +74,9 @@ export default function App() {
             <Route path="/admin/publications" element={<PublicationsAdmin />} />
             <Route path="/admin/import" element={<BatchImport />} />
             <Route path="/admin/test" element={<TestFirebase />} />
+            <Route path="/request-access" element={<RequestAccess />} />
+            <Route path="/admin/requests" element={<AdminRequests />} />
+            <Route path="/signup" element={<SignUp />} />
           </Routes>
         </Suspense>
         <Footer />

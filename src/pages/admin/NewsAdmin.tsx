@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useAuthStore } from '../../stores/authStore';
 import { fetchNews, createNews, updateNews, deleteNews, NewsFormData } from '../../services/newsService';
+import { checkIsAllowed } from '../../services/adminService';
 import { NewsItem } from '../../types/news';
 import { PlusCircle, Edit2, Trash2, Save, X, Loader2, Upload } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -24,10 +25,27 @@ export default function NewsAdmin() {
   });
   const [imageFile, setImageFile] = useState<File | null>(null);
   const [imagePreview, setImagePreview] = useState<string>('');
+  const [isAllowed, setIsAllowed] = useState(false);
+  const [checkingAccess, setCheckingAccess] = useState(true);
 
   useEffect(() => {
-    loadNews();
-  }, []);
+    const checkAccess = async () => {
+      console.log('Checking access effect. User:', user?.email);
+      if (user?.email) {
+        const allowed = await checkIsAllowed(user.email);
+        console.log('Is allowed:', allowed);
+        setIsAllowed(allowed);
+      }
+      setCheckingAccess(false);
+    };
+    checkAccess();
+  }, [user]);
+
+  useEffect(() => {
+    if (isAllowed) {
+      loadNews();
+    }
+  }, [isAllowed]);
 
   const loadNews = async () => {
     setLoading(true);
@@ -38,10 +56,13 @@ export default function NewsAdmin() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
+    console.log('Attempting login with:', email);
     try {
       await signIn(email, password);
-    } catch (error) {
-      alert('Login failed. Please check your credentials.');
+      console.log('Login successful');
+    } catch (error: any) {
+      console.error('Login error:', error);
+      alert(`Login failed: ${error.message}`);
     }
   };
 
@@ -172,11 +193,28 @@ export default function NewsAdmin() {
           </div>
           <button
             type="submit"
-            className="w-full bg-hampton-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+            className="w-full bg-hampton-blue hover:bg-blue-700 text-white font-bold py-2 px-4 rounded mb-4"
           >
             Login
           </button>
+          <div className="text-center text-sm text-gray-400">
+            Don't have an account? <Link to="/request-access" className="text-hampton-blue hover:underline">Request Access</Link>
+          </div>
         </form>
+      </div>
+    );
+  }
+
+  if (checkingAccess) {
+    return <div className="min-h-screen bg-black text-white flex items-center justify-center">Checking access...</div>;
+  }
+
+  if (!isAllowed) {
+    return (
+      <div className="min-h-screen bg-black text-white flex items-center justify-center flex-col gap-4">
+        <div className="text-xl text-red-500">Access Denied</div>
+        <p>You are not authorized to access this page.</p>
+        <button onClick={() => signOut()} className="text-hampton-blue hover:underline">Sign Out</button>
       </div>
     );
   }
@@ -223,11 +261,10 @@ export default function NewsAdmin() {
 
             {statusMessage && (
               <div
-                className={`mb-4 p-3 rounded ${
-                  statusMessage.type === 'success'
-                    ? 'bg-green-900/50 text-green-200 border border-green-700'
-                    : 'bg-red-900/50 text-red-200 border border-red-700'
-                }`}
+                className={`mb-4 p-3 rounded ${statusMessage.type === 'success'
+                  ? 'bg-green-900/50 text-green-200 border border-green-700'
+                  : 'bg-red-900/50 text-red-200 border border-red-700'
+                  }`}
               >
                 {statusMessage.text}
               </div>
