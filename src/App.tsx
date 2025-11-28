@@ -30,6 +30,7 @@ const BatchImport = lazy(() => import('./pages/admin/BatchImport'));
 const RequestAccess = lazy(() => import('./pages/admin/RequestAccess'));
 const AdminRequests = lazy(() => import('./pages/admin/AdminRequests'));
 const SignUp = lazy(() => import('./pages/admin/SignUp'));
+const JoinUs = lazy(() => import('./pages/people/JoinUs'));
 
 function HomePage() {
   return (
@@ -67,6 +68,7 @@ export default function App() {
             <Route path="/news/latest" element={<Latest />} />
             <Route path="/news/:id" element={<NewsDetail />} />
             <Route path="/people/students" element={<Students />} />
+            <Route path="/people/join" element={<JoinUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/education/undergraduate" element={<Undergraduate />} />
             <Route path="/education/internships" element={<Internships />} />

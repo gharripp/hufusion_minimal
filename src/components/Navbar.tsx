@@ -20,6 +20,7 @@ const navItems = {
   PEOPLE: [
     { label: 'Faculty', href: '/people/faculty' },
     { label: 'Students', href: '/people/students' },
+    { label: 'Join the Team', href: '/people/join' },
   ],
   EDUCATION: [
     { label: 'Past Student Projects', href: '/education/undergraduate' },

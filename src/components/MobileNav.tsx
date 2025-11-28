@@ -22,6 +22,7 @@ const navItems = {
   PEOPLE: [
     { label: 'Faculty', href: '/people/faculty' },
     { label: 'Students', href: '/people/students' },
+    { label: 'Join the Team', href: '/people/join' },
   ],
   EDUCATION: [
     { label: 'Past Student Projects', href: '/education/undergraduate' },
@@ -62,9 +63,8 @@ export default function MobileNav({ isOpen, onClose }: MobileNavProps) {
             >
               <span>{category}</span>
               <ChevronDown
-                className={`h-5 w-5 transition-transform ${
-                  expandedSection === category ? 'rotate-180' : ''
-                }`}
+                className={`h-5 w-5 transition-transform ${expandedSection === category ? 'rotate-180' : ''
+                  }`}
               />
             </button>
             {expandedSection === category && (
