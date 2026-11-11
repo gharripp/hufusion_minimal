@@ -16,7 +16,8 @@ service firebase.storage {
     // Ph.D. inquiry CVs - anyone may upload one new file (PDF/Word, < 10 MB), nobody may list.
     // Only signed-in users may open a file, and only via its random path stored in the admin-only Firestore doc.
     match /phd_cvs/{submissionId}/{fileName} {
-      allow create: if request.resource.size < 10 * 1024 * 1024
+      allow create: if resource == null
+        && request.resource.size < 10 * 1024 * 1024
         && request.resource.contentType.matches(
              'application/pdf|application/msword|application/vnd[.]openxmlformats-officedocument[.]wordprocessingml[.]document');
       allow get, delete: if request.auth != null;
