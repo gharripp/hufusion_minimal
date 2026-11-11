@@ -75,6 +75,7 @@ export default function Footer() {
               <img
                 src="/images/HU_logo_white.png"
                 alt="Hampton University"
+                loading="lazy"
                 className="h-16 w-auto hover:opacity-80 transition-opacity"
               />
             </a>

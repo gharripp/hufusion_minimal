@@ -30,10 +30,8 @@ export default function NewsAdmin() {
 
   useEffect(() => {
     const checkAccess = async () => {
-      console.log('Checking access effect. User:', user?.email);
       if (user?.email) {
         const allowed = await checkIsAllowed(user.email);
-        console.log('Is allowed:', allowed);
         setIsAllowed(allowed);
       }
       setCheckingAccess(false);
@@ -56,10 +54,8 @@ export default function NewsAdmin() {
 
   const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Attempting login with:', email);
     try {
       await signIn(email, password);
-      console.log('Login successful');
     } catch (error: any) {
       console.error('Login error:', error);
       alert(`Login failed: ${error.message}`);
@@ -378,6 +374,7 @@ export default function NewsAdmin() {
                   <img
                     src={item.image}
                     alt={item.title}
+                    loading="lazy"
                     className="w-32 h-32 object-cover rounded ml-4"
                   />
                 )}

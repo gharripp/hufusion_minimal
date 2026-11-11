@@ -1,7 +1,10 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function MagneticConfinement() {
+  usePageTitle('Magnetic Confinement');
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto py-16"> {/* Removed px-4 sm:px-6 lg:px-8 from here */}

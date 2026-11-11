@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from 'firebase/auth';
-import { getFirestore, connectFirestoreEmulator } from 'firebase/firestore';
+import { getFirestore } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 // Firebase configuration
@@ -23,15 +23,5 @@ export const auth = getAuth(app);
 // Initialize Firestore - connect to the "news" database
 // Note: The database is named "news" instead of the default "(default)"
 export const db = getFirestore(app, 'news');
-
-// Enable debug logging to see what's happening
-if (import.meta.env.DEV) {
-  console.log('Firebase initialized with config:', {
-    projectId: firebaseConfig.projectId,
-    authDomain: firebaseConfig.authDomain,
-    storageBucket: firebaseConfig.storageBucket
-  });
-  console.log('Firestore instance:', db);
-}
 
 export const storage = getStorage(app);

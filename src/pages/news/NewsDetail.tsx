@@ -4,10 +4,12 @@ import { Calendar, User, ArrowLeft } from 'lucide-react';
 import { NewsItem } from '../../types/news';
 import { fetchNewsById } from '../../services/newsService';
 import { newsItems } from '../../data/news';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function NewsDetail() {
   const { id } = useParams<{ id: string }>();
   const [news, setNews] = useState<NewsItem | null>(null);
+  usePageTitle(news?.title);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 

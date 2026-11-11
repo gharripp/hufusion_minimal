@@ -4,6 +4,7 @@ import { useAuthStore } from './stores/authStore';
 
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
+import ScrollToTop from './components/ScrollToTop';
 import Hero from './components/Hero';
 import LatestNews from './components/news/LatestNews';
 
@@ -31,6 +32,7 @@ const RequestAccess = lazy(() => import('./pages/admin/RequestAccess'));
 const AdminRequests = lazy(() => import('./pages/admin/AdminRequests'));
 const SignUp = lazy(() => import('./pages/admin/SignUp'));
 const JoinUs = lazy(() => import('./pages/people/JoinUs'));
+const NotFound = lazy(() => import('./pages/NotFound'));
 
 function HomePage() {
   return (
@@ -50,10 +52,17 @@ export default function App() {
 
   return (
     <Router>
+      <ScrollToTop />
       <div className="min-h-screen bg-black text-white">
         <Navbar />
         {/* Use Suspense to show a fallback while the component is loading */}
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense
+          fallback={
+            <div className="min-h-screen bg-black flex items-center justify-center">
+              <div className="w-10 h-10 border-4 border-gray-700 border-t-hampton-blue rounded-full animate-spin" aria-label="Loading" />
+            </div>
+          }
+        >
           <Routes>
             <Route path="/" element={<HomePage />} />
             <Route path="/fusion/overview" element={<Overview />} />
@@ -79,6 +88,7 @@ export default function App() {
             <Route path="/request-access" element={<RequestAccess />} />
             <Route path="/admin/requests" element={<AdminRequests />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
         <Footer />

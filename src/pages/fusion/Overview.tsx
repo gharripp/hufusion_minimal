@@ -1,6 +1,9 @@
 import PageHeader from '../../components/PageHeader';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function Overview() {
+  usePageTitle('Fusion Energy Overview');
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto py-16">
@@ -72,9 +75,10 @@ export default function Overview() {
               </div>
 
               <div className="relative rounded-lg overflow-hidden">
-                <img 
+                <img
                   src="https://images.unsplash.com/photo-1462331940025-496dfbfc7564?ixlib=rb-4.0.3&auto=format&fit=crop&w=2048&q=80"
                   alt="Fusion Research Facility"
+                  loading="lazy"
                   className="w-full h-64 object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent"></div>

@@ -4,8 +4,11 @@ import { newsItems } from '../../data/news';
 import { fetchNews } from '../../services/newsService';
 import { NewsItem } from '../../types/news';
 import NewsGrid from '../../components/news/NewsGrid';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function Latest() {
+  usePageTitle('Latest News');
+
   const [news, setNews] = useState<NewsItem[]>(newsItems);
   const [loading, setLoading] = useState(true);
 

@@ -1,6 +1,7 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { ArrowLeft } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const peopleData = {
   'dr-lowe': {
@@ -118,6 +119,7 @@ const peopleData = {
 export default function PersonBio() {
   const { id } = useParams<{ id: string }>();
   const person = peopleData[id as keyof typeof peopleData];
+  usePageTitle(person?.name);
 
   if (!person) {
     return <div className="min-h-screen bg-black pt-20 text-white">Person not found</div>;
@@ -126,16 +128,17 @@ export default function PersonBio() {
   return (
     <div className="min-h-screen bg-black pt-20">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-        <a href="/people/faculty" className="inline-flex items-center text-gray-400 hover:text-hampton-blue mb-8">
+        <Link to="/people/faculty" className="inline-flex items-center text-gray-400 hover:text-hampton-blue mb-8">
           <ArrowLeft className="h-5 w-5 mr-2" />
           Back to Faculty
-        </a>
+        </Link>
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
           <div className="lg:col-span-1">
             <div className="rounded-lg overflow-hidden">
               <img
                 src={person.image}
                 alt={person.name}
+                loading="lazy"
                 className="w-full h-auto"
               />
             </div>

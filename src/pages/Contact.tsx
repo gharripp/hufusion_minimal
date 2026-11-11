@@ -1,7 +1,10 @@
 import React, { useState } from 'react';
 import { Mail, Send, User, MessageSquare, Building2 } from 'lucide-react';
+import usePageTitle from '../hooks/usePageTitle';
 
 export default function Contact() {
+  usePageTitle('Contact');
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',

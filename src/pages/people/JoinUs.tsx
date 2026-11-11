@@ -1,8 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight, ExternalLink } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function JoinUs() {
+  usePageTitle('Join Us');
+
     return (
         <div className="min-h-screen bg-black text-white pt-28 pb-16">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

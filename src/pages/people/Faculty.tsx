@@ -1,6 +1,7 @@
 import React from 'react';
 import PersonCard from '../../components/PersonCard';
 import PageHeader from '../../components/PageHeader';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const facultyMembers = [
   {
@@ -46,6 +47,8 @@ const facultyMembers = [
 ];
 
 export default function Faculty() {
+  usePageTitle('Faculty');
+
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto py-16">

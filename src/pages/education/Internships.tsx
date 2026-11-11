@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import { Users, Zap, Cpu, Printer, Route, Atom } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 interface Team {
   name: string;
@@ -49,6 +51,8 @@ const summerProgram2024: Team[] = [
 ];
 
 export default function Internships() {
+  usePageTitle('Internships');
+
   return (
     <div className="min-h-screen bg-black pt-20">
       <PageHeader
@@ -164,12 +168,12 @@ export default function Internships() {
             Applications for future summer research programs will be announced here.
             For more information or to express your interest, please get in touch with us.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block bg-hampton-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
           >
             Contact Us
-          </a>
+          </Link>
         </div>
       </div>
     </div>

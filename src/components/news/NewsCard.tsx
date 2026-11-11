@@ -18,6 +18,7 @@ export default function NewsCard({ news, featured = false }: NewsCardProps) {
         <img
           src={news.image}
           alt={news.title}
+          loading="lazy"
           className="w-full h-full object-cover transition-transform group-hover:scale-110"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent opacity-60" />

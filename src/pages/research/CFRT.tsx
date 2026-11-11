@@ -1,7 +1,10 @@
 import React from 'react';
 import PageHeader from '../../components/PageHeader';
+import usePageTitle from '../../hooks/usePageTitle';
 
 export default function CfrtDivertorResearch() {
+  usePageTitle('CFRT Divertor Research');
+
   return (
     <div className="min-h-screen bg-black pt-20"> {/* This handles space for fixed header */}
       <div className="max-w-7xl mx-auto">

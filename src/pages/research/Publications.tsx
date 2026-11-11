@@ -3,8 +3,11 @@ import PageHeader from '../../components/PageHeader';
 import { FileText, ExternalLink, Users, Calendar } from 'lucide-react';
 import { fetchPublications } from '../../services/publicationService';
 import { Publication } from '../../types/publication';
+import usePageTitle from '../../hooks/usePageTitle';
 
 const Publications = () => {
+  usePageTitle('Publications');
+
   const [publications, setPublications] = useState<Publication[]>([]);
   const [loading, setLoading] = useState(true);
 

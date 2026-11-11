@@ -1,6 +1,8 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import PageHeader from '../../components/PageHeader';
 import { Users } from 'lucide-react';
+import usePageTitle from '../../hooks/usePageTitle';
 
 interface Project {
   students: string[];
@@ -42,6 +44,8 @@ const projectsBySemester = [
 ];
 
 export default function Undergraduate() {
+  usePageTitle('Undergraduate Research');
+
   return (
     <div className="min-h-screen bg-black pt-20">
       <PageHeader
@@ -94,12 +98,12 @@ export default function Undergraduate() {
             We welcome motivated students who are passionate about fusion energy research.
             Check out our Summer Research Program or contact us to learn about current opportunities.
           </p>
-          <a
-            href="/contact"
+          <Link
+            to="/contact"
             className="inline-block bg-hampton-blue hover:bg-blue-700 text-white font-semibold py-3 px-8 rounded-lg transition-colors"
           >
             Get in Touch
-          </a>
+          </Link>
         </div>
       </div>
     </div>

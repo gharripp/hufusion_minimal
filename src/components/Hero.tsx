@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   return (
@@ -13,15 +14,15 @@ export default function Hero() {
       </div>
 
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
-        <h1 className="text-8xl font-bold text-hampton-blue tracking-tight mb-6 font-mono">
+        <h1 className="text-5xl sm:text-6xl md:text-8xl font-bold text-hampton-blue tracking-tight mb-6 font-mono">
           STAR_LITE
         </h1>
-        <p className="text-3xl text-gray-300 mb-8 max-w-3xl">
+        <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-3xl">
           Stellarator for Training And Research
         </p>
-        <a href="/research/star-lite" className="border-2 border-white px-12 py-3 text-lg hover:bg-white hover:text-black transition-all duration-300">
+        <Link to="/research/star-lite" className="border-2 border-white px-12 py-3 text-lg hover:bg-white hover:text-black transition-all duration-300">
           DISCOVER
-        </a>
+        </Link>
       </div>
     </section>
   );

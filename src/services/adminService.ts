@@ -44,14 +44,12 @@ export async function createAccountRequest(email: string, name: string, reason?:
 // Fetch pending requests
 export async function fetchPendingRequests(): Promise<AccountRequest[]> {
     try {
-        console.log('Fetching pending requests...');
         const q = query(
             collection(db, REQUESTS_COLLECTION),
             where('status', '==', 'pending'),
             orderBy('createdAt', 'desc')
         );
         const snapshot = await getDocs(q);
-        console.log('Pending requests found:', snapshot.size);
 
         return snapshot.docs.map(doc => ({
             id: doc.id,
@@ -62,13 +60,11 @@ export async function fetchPendingRequests(): Promise<AccountRequest[]> {
 
         // Fallback: Try without sorting (likely missing index)
         try {
-            console.log('Attempting fallback query (unsorted)...');
             const q = query(
                 collection(db, REQUESTS_COLLECTION),
                 where('status', '==', 'pending')
             );
             const snapshot = await getDocs(q);
-            console.log('Fallback requests found:', snapshot.size);
 
             // Sort manually in client
             const requests = snapshot.docs.map(doc => ({
@@ -126,20 +122,15 @@ export async function rejectRequest(requestId: string): Promise<void> {
 
 // Check if a user is allowed
 export async function checkIsAllowed(email: string): Promise<boolean> {
-    console.log('Checking access for:', email);
-
     // Always allow the super admin (case-insensitive)
     if (email.toLowerCase() === 'fusion@hamptonu.edu') {
-        console.log('Super admin allowed');
         return true;
     }
 
     try {
         const docRef = doc(db, ALLOWED_USERS_COLLECTION, email);
         const docSnap = await getDoc(docRef);
-        const exists = docSnap.exists();
-        console.log('User exists in allowed_users:', exists);
-        return exists;
+        return docSnap.exists();
     } catch (error) {
         console.error('Error checking allowed status:', error);
         return false;

@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { useAuthStore } from '../../stores/authStore';
 import { Plus, Edit2, Trash2, FileText, ExternalLink } from 'lucide-react';
 import {
@@ -171,7 +172,7 @@ export default function PublicationsAdmin() {
               Sign In
             </button>
             <div className="text-center text-sm text-gray-400 mt-4">
-              Don't have an account? <a href="/request-access" className="text-hampton-blue hover:underline">Request Access</a>
+              Don't have an account? <Link to="/request-access" className="text-hampton-blue hover:underline">Request Access</Link>
             </div>
           </form>
         </div>
