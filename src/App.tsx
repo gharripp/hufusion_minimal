@@ -33,6 +33,8 @@ const AdminRequests = lazy(() => import('./pages/admin/AdminRequests'));
 const SignUp = lazy(() => import('./pages/admin/SignUp'));
 const JoinUs = lazy(() => import('./pages/people/JoinUs'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+const PhdApply = lazy(() => import('./pages/PhdApply'));
+const PhdInquiries = lazy(() => import('./pages/admin/PhdInquiries'));
 
 function HomePage() {
   return (
@@ -79,6 +81,7 @@ export default function App() {
             <Route path="/people/students" element={<Students />} />
             <Route path="/people/join" element={<JoinUs />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/phd" element={<PhdApply />} />
             <Route path="/education/undergraduate" element={<Undergraduate />} />
             <Route path="/education/internships" element={<Internships />} />
             <Route path="/admin/news" element={<NewsAdmin />} />
@@ -87,6 +90,7 @@ export default function App() {
             <Route path="/admin/test" element={<TestFirebase />} />
             <Route path="/request-access" element={<RequestAccess />} />
             <Route path="/admin/requests" element={<AdminRequests />} />
+            <Route path="/admin/phd" element={<PhdInquiries />} />
             <Route path="/signup" element={<SignUp />} />
             <Route path="*" element={<NotFound />} />
           </Routes>

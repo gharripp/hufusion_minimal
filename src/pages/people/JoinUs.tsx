@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowRight, ExternalLink } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import usePageTitle from '../../hooks/usePageTitle';
 
 export default function JoinUs() {
@@ -66,26 +66,6 @@ export default function JoinUs() {
                         </h2>
 
                         <div className="space-y-6">
-                            {/* Assistant Professor */}
-                            <div className="bg-gray-900 p-6 rounded-xl border border-gray-800 hover:border-hampton-blue transition-colors group">
-                                <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
-                                    <div>
-                                        <h3 className="text-xl font-bold text-white group-hover:text-hampton-blue transition-colors">
-                                            Tenure-Track Assistant Professor
-                                        </h3>
-                                        <p className="text-gray-400 mt-1">Plasma Physics / Fusion Energy</p>
-                                    </div>
-                                    <a
-                                        href="https://home.hamptonu.edu/hr/2025/11/13/assistant-professor-of-plasma-physics-2/"
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="inline-flex items-center px-4 py-2 bg-hampton-blue hover:bg-blue-700 text-white rounded-lg transition-colors font-semibold whitespace-nowrap"
-                                    >
-                                        Apply Now <ExternalLink className="ml-2 w-4 h-4" />
-                                    </a>
-                                </div>
-                            </div>
-
                             {/* Post-Doc */}
                             <div className="bg-gray-900 p-6 rounded-xl border border-gray-800">
                                 <h3 className="text-xl font-bold text-white mb-2">Post-Doctoral Research Staff</h3>
@@ -103,8 +83,8 @@ export default function JoinUs() {
                                 <p className="text-gray-400 mb-4">
                                     Join our graduate program and conduct cutting-edge research in stellarator physics.
                                 </p>
-                                <Link to="/contact" className="text-hampton-blue hover:text-white transition-colors inline-flex items-center">
-                                    Inquire about positions <ArrowRight className="ml-2 w-4 h-4" />
+                                <Link to="/phd" className="text-hampton-blue hover:text-white transition-colors inline-flex items-center">
+                                    Send us your information and CV <ArrowRight className="ml-2 w-4 h-4" />
                                 </Link>
                             </div>
 

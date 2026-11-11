@@ -3,7 +3,7 @@ import { useAuthStore } from '../../stores/authStore';
 import { fetchNews, createNews, updateNews, deleteNews, NewsFormData } from '../../services/newsService';
 import { checkIsAllowed } from '../../services/adminService';
 import { NewsItem } from '../../types/news';
-import { PlusCircle, Edit2, Trash2, Save, X, Loader2, Upload } from 'lucide-react';
+import { PlusCircle, Edit2, Trash2, Save, X, Loader2, Upload, GraduationCap } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function NewsAdmin() {
@@ -234,6 +234,13 @@ export default function NewsAdmin() {
             >
               <Upload size={20} />
               Batch Import
+            </Link>
+            <Link
+              to="/admin/phd"
+              className="bg-purple-700 hover:bg-purple-800 text-white font-bold py-2 px-4 rounded flex items-center gap-2"
+            >
+              <GraduationCap size={20} />
+              Ph.D. Inquiries
             </Link>
             <button
               onClick={() => signOut()}

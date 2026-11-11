@@ -20,7 +20,7 @@ const navItems = {
     { label: 'Collaborations', href: '/research/collaborations' },
   ],
   PEOPLE: [
-    { label: 'Faculty', href: '/people/faculty' },
+    { label: 'Staff', href: '/people/faculty' },
     { label: 'Students', href: '/people/students' },
     { label: 'Join the Team', href: '/people/join' },
   ],

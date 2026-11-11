@@ -1,9 +1,28 @@
-import React from 'react';
 import PersonCard from '../../components/PersonCard';
 import PageHeader from '../../components/PageHeader';
 import usePageTitle from '../../hooks/usePageTitle';
 
-const facultyMembers = [
+interface StaffMember {
+  id: string;
+  name: string;
+  role: string;
+  title: string;
+  image?: string;
+  specialization: string;
+}
+
+const projectManagement: StaffMember[] = [
+  {
+    id: 'hattie-session',
+    name: 'Hattie Session',
+    role: 'Project Manager',
+    title: 'Project Manager',
+    image: '/images/hattie_session.jpg',
+    specialization: 'HU Fusion',
+  },
+];
+
+const facultyMembers: StaffMember[] = [
   {
     id: 'dr-lowe',
     name: 'Dr. Calvin Lowe',
@@ -12,6 +31,41 @@ const facultyMembers = [
     image: '/images/Calvin-Lowe.png',
     specialization: 'Plasma Physics',
   },
+  {
+    id: 'dr-naik',
+    name: 'Dr. Shibabrat Naik',
+    role: 'STAR_Lite Theory Lead',
+    title: 'Assistant Professor',
+    image: '/images/naik_shibabrat.jpg',
+    specialization: 'Non-Linear Systems',
+  },
+  {
+    id: 'dr-tema-biwole',
+    name: 'Dr. Arsene Tema Biwole',
+    role: 'STAR_Lite Experiment',
+    title: 'Assistant Professor',
+    image: '/images/arsene_tema_biwole.jpg',
+    specialization: 'Plasma Transport',
+  },
+  {
+    id: 'dr-smith',
+    name: 'Dr. Carl Smith',
+    role: 'RF Pulsed Power',
+    title: 'Research Assistant Professor',
+    image: '/images/carl_smith.jpg',
+    specialization: 'RF Pulsed Power',
+  },
+  {
+    id: 'dr-harrer',
+    name: 'Dr. Georg Harrer',
+    role: 'STAR_Lite Experimental Lead',
+    title: 'Assistant Professor',
+    image: '/images/georg_harrer.jpg',
+    specialization: 'Plasma Edge Physics',
+  },
+];
+
+const cfrtFounders: StaffMember[] = [
   {
     id: 'dr-punjabi',
     name: 'Dr. Alkesh Punjabi',
@@ -28,41 +82,43 @@ const facultyMembers = [
     image: '/images/halima_ali.jpg',
     specialization: 'Divertor Theory',
   },
+];
+
+const sections: { heading: string; description?: string; members: StaffMember[] }[] = [
+  { heading: 'Project Management', members: projectManagement },
+  { heading: 'Faculty', members: facultyMembers },
   {
-    id: 'dr-naik',
-    name: 'Dr. Shibabrat Naik',
-    role: 'STAR_Lite Theory Lead',
-    title: 'Assistant Professor',
-    image: '/images/naik_shibabrat.jpg',
-    specialization: 'Non-Linear Systems',
+    heading: 'Founders of CFRT',
+    description: 'Founders of the Center for Fusion Research and Training (CFRT), established in 1994.',
+    members: cfrtFounders,
   },
-  {
-    id: 'dr-harrer',
-    name: 'Dr. Georg Harrer',
-    role: 'STAR_Lite Experimental Lead',
-    title: 'Assistant Professor',
-    image: '/images/georg_harrer.jpg',
-    specialization: 'Plasma Edge Physics',
-  }
 ];
 
 export default function Faculty() {
-  usePageTitle('Faculty');
+  usePageTitle('Staff');
 
   return (
     <div className="min-h-screen bg-black">
       <div className="max-w-7xl mx-auto py-16">
-        <PageHeader 
-          title="Faculty"
-          description="Meet our distinguished faculty members leading groundbreaking fusion research"
+        <PageHeader
+          title="Staff"
+          description="Meet the people behind HU Fusion and the STAR_Lite stellarator"
         />
-        
-        <div className="px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {facultyMembers.map((member) => (
-              <PersonCard key={member.id} person={member} clickable={false} />
-            ))}
-          </div>
+
+        <div className="px-4 sm:px-6 lg:px-8 space-y-16 mt-12">
+          {sections.map((section) => (
+            <section key={section.heading}>
+              <h2 className="text-2xl font-bold text-hampton-blue mb-2">{section.heading}</h2>
+              {section.description && (
+                <p className="text-gray-400 mb-6">{section.description}</p>
+              )}
+              <div className={`grid grid-cols-1 md:grid-cols-3 gap-6 ${section.description ? '' : 'mt-6'}`}>
+                {section.members.map((member) => (
+                  <PersonCard key={member.id} person={member} clickable={false} />
+                ))}
+              </div>
+            </section>
+          ))}
         </div>
       </div>
     </div>

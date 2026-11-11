@@ -1,0 +1,59 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Helper function to check if user is admin
+    function isAdmin() {
+      return request.auth != null && (
+        // Hardcoded super admin
+        request.auth.token.email == 'fusion@hamptonu.edu' || 
+        // Check if user is in allowed_users collection
+        exists(/databases/$(database)/documents/allowed_users/$(request.auth.token.email))
+      );
+    }
+    // News collection
+    match /news/{document} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    // Publications collection
+    match /publications/{document} {
+      allow read: if true;
+      allow create, update, delete: if isAdmin();
+    }
+    // Account Requests - public create, admin read/update
+    match /account_requests/{document} {
+      allow create: if true;
+      allow read, update: if isAdmin();
+    }
+    // Allowed Users - admin only
+    match /allowed_users/{document} {
+      allow read, write: if isAdmin();
+    }
+    // Ph.D. inquiries (hufusion.org/phd) - public create with validation, admin-only read/update/delete
+    match /phd_inquiries/{document} {
+      function isShortString(field, maxLen) {
+        return request.resource.data.get(field, '') is string
+          && request.resource.data.get(field, '').size() <= maxLen;
+      }
+      allow create: if request.resource.data.keys().hasOnly([
+            'name', 'email', 'currentStatus', 'institution', 'field', 'interests',
+            'startTerm', 'source', 'message', 'cvPath', 'cvName', 'consent', 'status', 'createdAt'])
+        && request.resource.data.keys().hasAll(['name', 'email', 'interests', 'consent', 'status', 'createdAt'])
+        && request.resource.data.name is string
+        && request.resource.data.name.size() > 0 && request.resource.data.name.size() <= 200
+        && request.resource.data.email is string && request.resource.data.email.size() <= 200
+        && request.resource.data.email.matches('^[^@\\s]+@[^@\\s]+\\.[^@\\s]+$')
+        && request.resource.data.interests is string
+        && request.resource.data.interests.size() > 0 && request.resource.data.interests.size() <= 5000
+        && isShortString('currentStatus', 200) && isShortString('institution', 200)
+        && isShortString('field', 200) && isShortString('startTerm', 100)
+        && isShortString('source', 100) && isShortString('message', 5000)
+        && isShortString('cvName', 200)
+        && request.resource.data.get('cvPath', 'phd_cvs/' + document + '/x').matches('phd_cvs/' + document + '/[^/]+')
+        && request.resource.data.consent == true
+        && request.resource.data.status == 'new'
+        && request.resource.data.createdAt == request.time;
+      allow read, update, delete: if isAdmin();
+    }
+  }
+}
