@@ -59,7 +59,7 @@ const facultyMembers: StaffMember[] = [
     id: 'dr-harrer',
     name: 'Dr. Georg Harrer',
     role: 'STAR_Lite Experimental Lead',
-    title: 'Assistant Professor',
+    title: 'Research Assistant Professor',
     image: '/images/georg_harrer.jpg',
     specialization: 'Plasma Edge Physics',
   },
